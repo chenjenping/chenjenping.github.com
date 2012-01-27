@@ -2,16 +2,64 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>chenjenping.github.com</title>
+
+        <title>challenge jennet & ping</title>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/md5-min.js"></script>
+
+        <script type="text/javascript">
+            function getCookie(cookie_name)
+            {
+                if (document.cookie.length > 0)
+                {
+                    var raw_cookie = document.cookie.split('\;');
+                    for (item in raw_cookie)
+                    {
+                        var parsed_cookie = raw_cookie[item].split('=');
+                        if (parsed_cookie[0] == cookie_name)
+                        {
+                            return unescape(parsed_cookie[1]);
+                        }
+                    }
+                }
+                return null;
+            }
+
+            function setCookie(cookie_name, value, expires)
+            {
+                var exdate = new Date();
+                exdate.setDate(exdate.getDate() + expires);
+                document.cookie = cookie_name + '=' + escape(value) + ((expires == null) ? '' : ';expires=' + exdate.toGMTString);
+            }
+
+            function checkCookie()
+            {
+                var useremail = getCookie('useremail');
+                if (useremail != null)
+                {
+                    var hash = hex_md5(useremail);
+                    var r_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=retro';
+                    $('div#profile_img').html('<img src="' + r_profile_img_url + '">');
+                }
+            }
+
+            $(function()
+            {
+                checkCookie();
+            });
+        </script>
     </head>
     <body>
         <header>
-            <h1>chenjenping.github.com</h1>
+            <h1>ch   en   jen      ping</h1>
+            <h2>  all  ge    net & 
         </header>
-        <article style="min-height: 400px;">
-        </article>
+        <section style="min-height: 400px;">
+            <div id="profile_img"></div>
+        </section>
         <footer>
-            &copy;chenjenping.
+            &copy;challenge jennet & ping.
         </footer>
     </body>
 </html>
